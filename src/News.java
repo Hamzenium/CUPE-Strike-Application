@@ -56,12 +56,7 @@ public class News {
 
     @Override
     public String toString() {
-        return "News: " +
-                "source='" + source + '\'' +
-                ", category='" + category + '\'' +
-                ", message='" + message + '\'' +
-                ", length=" + length +
-                ", time=" + time +
-                '}';
+        return this.message;
     }
+
 }

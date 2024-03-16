@@ -1,3 +1,4 @@
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -29,13 +30,16 @@ public class User {
 	        System.out.println("User " + username + " received message from channel " + news.getSource() + ": " + news.getMessage());
 	        messageStack.push(news);
 	    }
-	    public void viewMessages() {
-	        System.out.println("Messages for user " + username + ":");
+	    public String viewMessages() {
+	    	String result = "";
+	        result += "Messages for user " + username + " : ";
 	        while (!messageStack.isEmpty()) {
 	            News news = messageStack.pop();
-	            System.out.println( "Message: " + news.getMessage());
+	            result += "Message: " + news.toString()+" ";
 	        }
 	        clearMessages();
+	       System.out.println(result);
+	        return result;
 	    }
 	    private void clearMessages() {
 	        messageStack.clear();

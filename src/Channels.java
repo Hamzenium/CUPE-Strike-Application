@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-class Channels {
+public class Channels {
 	private Set<User> subscribers;
     private String channelName;
 
