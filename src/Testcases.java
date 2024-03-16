@@ -1,6 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
 import java.time.LocalDateTime;
 
 public class Testcases {
@@ -25,7 +26,28 @@ public class Testcases {
         assertEquals("Messages for user Alice : Message: Hello Abdullah lets meet 5 pm . ", user1.viewMessages()); 
 
     }
-    
+    @Test
+    public void testNewsOperations3() {
+        TeachingAssistant user1 = new TeachingAssistant("Hamzenium");
+        Bargain bargainChannel = new Bargain();
+        user1.subscribeToChannel(bargainChannel);
+        
+        BargainNews news1 = new BargainNews("University News", "Negotiation", "Hello Abdullah lets meet 5 pm .", 120, LocalDateTime.now());
+        StudentNews news2 = new StudentNews("University News", "Negotiation", "Hello Abdullah lets meet 5 pm .", 120, LocalDateTime.now());
+        BargainNews news3 = new BargainNews("University News", "Negotiation", "Hello Momina .", 120, LocalDateTime.now());
+      
+        bargainChannel.notifyObservers(news1);
+        bargainChannel.notifyObservers(news2);
+        bargainChannel.notifyObservers(news3);
+        BargainVistor visitor = new BargainVistor();
+        String output = visitor.acceptVisitor(user1);
+        System.out.println(output);
+   
+        assertEquals("[Hello Abdullah lets meet 5 pm ., Hello Momina .]", output); 
+
+    }
+
+
     @Test
     public void testGraduateResearchAssistantReceivesPicketNews() {
         GraduateResearchAssistant user3 = new GraduateResearchAssistant("Mustehsan");
@@ -41,7 +63,7 @@ public class Testcases {
         ContractFaculty user4 = new ContractFaculty("Fatima");
         Student studentChannel = new Student();
         user4.subscribeToChannel(studentChannel);
-        News news4 = new News("University News", "Academic Updates", "Reminder: Midterm exams start next week. Prepare accordingly.", 120, LocalDateTime.now());
+        StudentNews news4 = new StudentNews("University News", "Academic Updates", "Reminder: Midterm exams start next week. Prepare accordingly.", 120, LocalDateTime.now());
         studentChannel.notifyObservers(news4);
         assertEquals("Messages for user Fatima : Message: Reminder: Midterm exams start next week. Prepare accordingly. ", user4.viewMessages());
     }

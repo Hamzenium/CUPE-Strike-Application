@@ -7,7 +7,8 @@ public class User {
 
 	   private String username;
 	    private Set<Channels> subscribedChannels;
-	    private Stack<News> messageStack;
+	    Stack<News> messageStack;
+	    
 
 	    public User(String username) {
 	        this.username = username;
@@ -37,16 +38,14 @@ public class User {
 	            News news = messageStack.pop();
 	            result += "Message: " + news.toString()+" ";
 	        }
-	        clearMessages();
-	       System.out.println(result);
 	        return result;
-	    }
-	    private void clearMessages() {
-	        messageStack.clear();
 	    }
 
 		public String getUsername() {
 			return this.username;
+		}
+		public Stack<News>getMessagestack() {
+			return this.getMessagestack();
 		}
 
 }
